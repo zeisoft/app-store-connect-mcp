@@ -1,27 +1,27 @@
-# App Store Connect MCP server — through HeyMetra
+<div align="center">
 
-> **Unofficial.** This is not App Store Connect's own MCP server and this repository is not affiliated with, endorsed by or supported by App Store Connect. It documents how [HeyMetra](https://heymetra.com/), a remote MCP server built by Zeisoft, reads App Store Connect.
+<img src="assets/cover.png" alt="App Store Connect through HeyMetra's MCP server" width="100%">
+
+# App Store Connect &times; HeyMetra
 
 **A day of App Store units, proceeds and downloads, per app and country.**
+
+Your subscription revenue lives in App Store Connect. What you paid to get those subscribers does not. Ask about both in the same sentence.
 
 [![MCP Registry](https://img.shields.io/badge/MCP_Registry-com.heymetra%2Fheymetra-1f6feb)](https://registry.modelcontextprotocol.io/v0/servers/com.heymetra%2Fheymetra/versions)
 [![Transport](https://img.shields.io/badge/transport-Streamable_HTTP-444)](https://modelcontextprotocol.io/)
 [![Auth](https://img.shields.io/badge/auth-OAuth_2.1-444)](https://heymetra.com/security/)
 [![Connector page](https://img.shields.io/badge/heymetra.com-app-store-connect-1f6feb)](https://heymetra.com/connectors/app-store-connect/)
 
+```
+https://mcp.heymetra.com/mcp
+```
+
+</div>
+
 ---
 
-## What App Store Connect is
-
-App Store Connect is Apple’s platform for managing your iOS apps and viewing sales, subscriptions, and download reports. It’s the source of truth for your Apple revenue and install numbers.
-
-## What HeyMetra reads from App Store Connect
-
-Connect with an App Store Connect team key and your MCP client gets three tools: the apps on the account with their bundle IDs and SKUs; one day of sales — units, proceeds and downloads per app and country; and the reviews people wrote, with their star ratings and the replies you have already published, so you can ask which complaints nobody has answered. Apple publishes one sales report per day and yesterday's is the newest, so a month is thirty calls rather than one; ask for the days you need. What the key can reach is decided by the role you give it when you create it. Read-only: no tool changes the account, and HeyMetra cannot reply to a review.
-
-## What you can ask
-
-Once connected, in your own assistant, in plain language:
+## Ask it things like
 
 > How many downloads did each app get yesterday?
 
@@ -31,30 +31,7 @@ Once connected, in your own assistant, in plain language:
 
 > Which apps are on this account, and what are their bundle IDs?
 
-## Permissions
-
-You switch these on per connection, and a permission you leave off is a tool your assistant never sees.
-
-| Permission | What it covers | Changes anything? |
-|---|---|---|
-| **Apps** | Read the apps on the account. | No, read only |
-| **Sales** | Read daily sales and download reports. | No, read only |
-| **Store listing** | Read your App Store page as it is written — the name, subtitle, keywords, promotional text and description, in every market. | No, read only |
-| **Reviews** | Read the App Store reviews people wrote, their star ratings, and the replies you have already published. | No, read only |
-
-<details>
-<summary>What each permission lets an assistant do, in full</summary>
-
-- Lists the apps on your App Store Connect account with their bundle IDs and SKUs.
-- Reads what Apple PAID you for one of its fiscal periods, per currency and country — after commission, not sales.
-- Reads one day of App Store sales: units, downloads and proceeds per app and country. Apple publishes yesterday's report at the earliest.
-- Reads your App Store page as it is written — name, subtitle, keywords and promotional text, per market.
-- Reads the App Store reviews for one app — the star ratings, what each reviewer wrote, and the replies you already published. It cannot reply.
-</details>
-
-## What it can change
-
-- App Store Connect is a read-only source — HeyMetra reads it to answer questions and never changes the account.
+No dashboard, no export, no query language. You ask in the assistant you already use and the answer comes back with the account it came from.
 
 ## Connect App Store Connect
 
@@ -191,6 +168,29 @@ _The key is serverUrl, not url — the one every other JSON client spells differ
 Full walkthrough: [heymetra.com/mcp/antigravity/](https://heymetra.com/mcp/antigravity/)
 </details>
 
+## What it may and may not touch
+
+App Store Connect is a read-only source — HeyMetra reads it to answer questions and never changes the account.
+
+Permissions are switched on per connection, and one you leave off is a tool your assistant never sees.
+
+| Permission | What it covers | Changes anything? |
+|---|---|---|
+| **Apps** | Read the apps on the account. | No, read only |
+| **Sales** | Read daily sales and download reports. | No, read only |
+| **Store listing** | Read your App Store page as it is written — the name, subtitle, keywords, promotional text and description, in every market. | No, read only |
+| **Reviews** | Read the App Store reviews people wrote, their star ratings, and the replies you have already published. | No, read only |
+
+<details>
+<summary>What each permission lets an assistant do, in full</summary>
+
+- Lists the apps on your App Store Connect account with their bundle IDs and SKUs.
+- Reads what Apple PAID you for one of its fiscal periods, per currency and country — after commission, not sales.
+- Reads one day of App Store sales: units, downloads and proceeds per app and country. Apple publishes yesterday's report at the earliest.
+- Reads your App Store page as it is written — name, subtitle, keywords and promotional text, per market.
+- Reads the App Store reviews for one app — the star ratings, what each reviewer wrote, and the replies you already published. It cannot reply.
+</details>
+
 ## When something goes wrong
 
 <details>
@@ -238,9 +238,19 @@ Full walkthrough: [heymetra.com/mcp/antigravity/](https://heymetra.com/mcp/antig
 
 </details>
 
-## Everything else HeyMetra reads
+## What HeyMetra reads from App Store Connect
 
-One connection answers across accounts — which is the point, because spend lives in one place and revenue in another:
+Connect with an App Store Connect team key and your MCP client gets three tools: the apps on the account with their bundle IDs and SKUs; one day of sales — units, proceeds and downloads per app and country; and the reviews people wrote, with their star ratings and the replies you have already published, so you can ask which complaints nobody has answered. Apple publishes one sales report per day and yesterday's is the newest, so a month is thirty calls rather than one; ask for the days you need. What the key can reach is decided by the role you give it when you create it. Read-only: no tool changes the account, and HeyMetra cannot reply to a review.
+
+<details>
+<summary>About App Store Connect</summary>
+
+App Store Connect is Apple’s platform for managing your iOS apps and viewing sales, subscriptions, and download reports. It’s the source of truth for your Apple revenue and install numbers.
+</details>
+
+## One connection, not seven
+
+The reason to read App Store Connect through HeyMetra rather than through a server that only knows App Store Connect is everything else it can answer in the same breath:
 
 **Ads** — [Google Ads](https://heymetra.com/connectors/google-ads/) · [Meta](https://heymetra.com/connectors/meta-ads/)
 
@@ -254,17 +264,17 @@ One connection answers across accounts — which is the point, because spend liv
 
 **Channels** — [Slack](https://github.com/zeisoft/slack-mcp) · [Telegram](https://github.com/zeisoft/telegram-mcp)
 
-The full catalogue, with what each one can do today, is at [heymetra.com/connectors/](https://heymetra.com/connectors/).
+The full catalogue is at [heymetra.com/connectors/](https://heymetra.com/connectors/).
 
 ## Links
 
-- [App Store Connect connector page](https://heymetra.com/connectors/app-store-connect/) — the source this page is generated from
+- [App Store Connect connector page](https://heymetra.com/connectors/app-store-connect/)
 - [HeyMetra](https://heymetra.com/) — what the product is
-- [Setup per assistant](https://heymetra.com/mcp/) — eight clients, step by step
+- [Setup for every assistant](https://heymetra.com/mcp/)
 - [Security and limits](https://heymetra.com/security/)
-- [Pricing](https://heymetra.com/pricing/) — paid, no free plan and no trial
+- [Pricing](https://heymetra.com/pricing/)
 - [HeyMetra's own repository](https://github.com/zeisoft/heymetra-mcp)
 
 ---
 
-<sub>This README is generated from HeyMetra's live connector catalogue and refreshed daily; it is committed only when something in it actually changed. Corrections are welcome as issues. Built by <a href="https://zeisoft.com">Zeisoft</a>.</sub>
+<sub>Built by <a href="https://zeisoft.com">Zeisoft</a>, who make HeyMetra. Not affiliated with App Store Connect. This README is generated from HeyMetra's live connector catalogue and refreshed daily; corrections are welcome as issues.</sub>
