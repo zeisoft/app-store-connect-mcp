@@ -180,26 +180,22 @@ Full walkthrough: [heymetra.com/mcp/antigravity/](https://heymetra.com/mcp/antig
 
 ## What it may and may not touch
 
-App Store Connect is a read-only source — HeyMetra reads it to answer questions and never changes the account.
+Propose a change through this account's own API, for operations HeyMetra does not cover. Nothing is sent until you approve it, and HeyMetra cannot undo it afterwards.
 
 Permissions are switched on per connection, and one you leave off is a tool your assistant never sees.
 
 | Permission | What it covers | Changes anything? |
 |---|---|---|
-| **Apps** | Read the apps on the account. | No, read only |
-| **Sales** | Read daily sales and download reports. | No, read only |
-| **Store listing** | Read your App Store page as it is written — the name, subtitle, keywords, promotional text and description, in every market. | No, read only |
-| **Reviews** | Read the App Store reviews people wrote, their star ratings, and the replies you have already published. | No, read only |
+| **Direct API access** | Let your assistant use this account's own API for anything HeyMetra's other operations do not cover. It reads directly, and what comes back is the provider's own answer rather than a figure HeyMetra has checked. It can also propose changes — those are never applied until you approve them, and HeyMetra cannot undo one afterwards. | Yes — every change waits for your approval |
 
 <details>
 <summary>What each permission lets an assistant do, in full</summary>
 
-- Lists the apps on your App Store Connect account with their bundle IDs and SKUs.
-- Reads what Apple PAID you for one of its fiscal periods, per currency and country — after commission, not sales.
-- Reads one day of App Store sales: units, downloads and proceeds per app and country. Apple publishes yesterday's report at the earliest.
-- Reads your App Store page as it is written — name, subtitle, keywords and promotional text, per market.
-- Reads the App Store reviews for one app — the star ratings, what each reviewer wrote, and the replies you already published. It cannot reply.
+- Ask this account's own API a question HeyMetra's other operations do not cover. Reads only, and the answer is the provider's own rather than a figure HeyMetra has checked.
+- Propose a change through this account's own API, for operations HeyMetra does not cover. Nothing is sent until you approve it, and HeyMetra cannot undo it afterwards.
 </details>
+
+Anything that would change something comes back as a proposal you approve, inside bounds that live in code rather than in a prompt: ±50% on a budget, 5 campaigns per action and 20 changes a rolling day, and an approval that expires after 30 minutes. [How that works](https://heymetra.com/security/).
 
 ## When something goes wrong
 
