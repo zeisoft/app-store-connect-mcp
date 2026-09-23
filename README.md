@@ -246,7 +246,7 @@ Anything that would change something comes back as a proposal you approve, insid
 
 ## What HeyMetra reads from App Store Connect
 
-Connect with an App Store Connect team key and your MCP client gets three tools: the apps on the account with their bundle IDs and SKUs; one day of sales — units, proceeds and downloads per app and country; and the reviews people wrote, with their star ratings and the replies you have already published, so you can ask which complaints nobody has answered. Apple publishes one sales report per day and yesterday's is the newest, so a month is thirty calls rather than one; ask for the days you need. What the key can reach is decided by the role you give it when you create it. Read-only: no tool changes the account, and HeyMetra cannot reply to a review.
+Connect with an App Store Connect team key — the issuer id, the key id and the .p8 file — and your MCP client gets one tool that composes calls against Apple's API: the apps on the account with their bundle IDs and SKUs; one day of sales, with units, proceeds and downloads per app and country; the reviews people wrote, with their star ratings and the replies you have already published, so you can ask which complaints nobody has answered; and whatever else the key's role reaches. Apple publishes one sales report per day and yesterday's is the newest, so a month is thirty calls rather than one; ask for the days you need. What the key can reach is decided by the role you give it when you create it, and HeyMetra cannot see which role you chose, so it asks you at connect time whether this connection may change anything. The .p8 itself never leaves the vault: Apple wants a fresh signature on every request, and it is minted there rather than here.
 
 <details>
 <summary>About App Store Connect</summary>
@@ -260,13 +260,15 @@ The reason to read App Store Connect through HeyMetra rather than through a serv
 
 **Ads** — [Google Ads](https://heymetra.com/connectors/google-ads/) · [Meta](https://heymetra.com/connectors/meta-ads/)
 
-**Analytics** — [Google Analytics 4](https://heymetra.com/connectors/google-analytics-4/) · [Google Search Console](https://github.com/zeisoft/google-search-console-mcp)
+**Analytics** — [Google Analytics 4](https://heymetra.com/connectors/google-analytics-4/) · [Google Search Console](https://github.com/zeisoft/google-search-console-mcp) · [PostHog](https://github.com/zeisoft/posthog-mcp)
 
 **Ecommerce** — [Shopify](https://heymetra.com/connectors/shopify/) · [Trendyol](https://github.com/zeisoft/trendyol-mcp) · [WooCommerce](https://github.com/zeisoft/woocommerce-mcp)
 
 **Revenue & CRM** — [Stripe](https://heymetra.com/connectors/stripe/) · [HubSpot](https://heymetra.com/connectors/hubspot/) · [Zoho CRM](https://github.com/zeisoft/zoho-crm-mcp) · [Zoho SalesIQ](https://github.com/zeisoft/zoho-salesiq-mcp) · [Zoho Marketing Automation](https://github.com/zeisoft/zoho-marketing-automation-mcp)
 
 **Mobile** — [AppsFlyer](https://github.com/zeisoft/appsflyer-mcp) · [RevenueCat](https://heymetra.com/connectors/revenuecat/) · [Adapty](https://github.com/zeisoft/adapty-mcp) · **App Store Connect**
+
+**Work** — [Google Calendar](https://heymetra.com/connectors/google-calendar/) · [Google Meet](https://heymetra.com/connectors/google-meet/) · [Jira](https://github.com/zeisoft/jira-mcp)
 
 **Channels** — [Slack](https://github.com/zeisoft/slack-mcp) · [Telegram](https://github.com/zeisoft/telegram-mcp)
 
