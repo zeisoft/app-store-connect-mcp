@@ -45,9 +45,9 @@ In App Store Connect go to Users and Access → Integrations → App Store Conne
 
 Apple decides what a key can reach from the role you pick here, and the role cannot be changed afterwards. Sales figures need a role with report access; reading your App Store reviews needs one that covers them. Admin covers everything HeyMetra reads.
 
-> Worth knowing before you choose: an App Store Connect team key reaches EVERY app on the account whatever role it has — Apple offers no way to limit one to a single app.
+> Worth knowing before you choose: an App Store Connect team key reaches EVERY app on the account whatever role it has. Apple offers no way to limit one to a single app.
 
-**3. Download the .p8 file — this is your only chance**
+**3. Download the .p8 file, because this is your only chance**
 
 Apple keeps no copy. If it is lost the key is gone and you generate a new one. Note the Key ID beside it and the Issuer ID shown above the list; the Issuer ID is the same for every key on the account.
 
@@ -96,7 +96,7 @@ Full walkthrough: [heymetra.com/mcp/claude/](https://heymetra.com/mcp/claude/)
 
 Paste the address above into Settings → Security and login → Developer mode, then chatgpt.com/plugins.
 
-_The endpoint has to include its /mcp path here._
+_The address has to end in /mcp here._
 
 Full walkthrough: [heymetra.com/mcp/chatgpt/](https://heymetra.com/mcp/chatgpt/)
 </details>
@@ -157,7 +157,7 @@ Full walkthrough: [heymetra.com/mcp/codex/](https://heymetra.com/mcp/codex/)
 }
 ```
 
-_Leave the static OAuth fields empty — they exist for servers that cannot register themselves._
+_Leave the static OAuth fields empty; HeyMetra does not need them._
 
 Full walkthrough: [heymetra.com/mcp/cursor/](https://heymetra.com/mcp/cursor/)
 </details>
@@ -173,26 +173,26 @@ Full walkthrough: [heymetra.com/mcp/cursor/](https://heymetra.com/mcp/cursor/)
 }
 ```
 
-_The key is serverUrl, not url — the one every other JSON client spells differently._
+_The key is serverUrl, not url, unlike every other JSON client._
 
 Full walkthrough: [heymetra.com/mcp/antigravity/](https://heymetra.com/mcp/antigravity/)
 </details>
 
 ## What it may and may not touch
 
-Propose a change through this account's own API, for operations HeyMetra does not cover. Nothing is sent until you approve it, and HeyMetra cannot undo it afterwards.
+Propose a change to this account. Nothing is sent until you approve it, and HeyMetra cannot undo it afterwards.
 
 Permissions are switched on per connection, and one you leave off is a tool your assistant never sees.
 
 | Permission | What it covers | Changes anything? |
 |---|---|---|
-| **Direct API access** | Let your assistant use this account's own API for anything HeyMetra's other operations do not cover. It reads directly, and what comes back is the provider's own answer rather than a figure HeyMetra has checked. It can also propose changes — those are never applied until you approve them, and HeyMetra cannot undo one afterwards. | Yes — every change waits for your approval |
+| **Full account access** | Lets your assistant read anything in this account to answer your questions. The figures are the provider's own, not ones HeyMetra has checked. It can also propose changes: none is applied until you approve it, and HeyMetra cannot undo one afterwards. | Yes — every change waits for your approval |
 
 <details>
 <summary>What each permission lets an assistant do, in full</summary>
 
-- Ask this account's own API a question HeyMetra's other operations do not cover. Reads only, and the answer is the provider's own rather than a figure HeyMetra has checked.
-- Propose a change through this account's own API, for operations HeyMetra does not cover. Nothing is sent until you approve it, and HeyMetra cannot undo it afterwards.
+- Ask anything about this account and get the answer from its live data. Reads only, and the figures are the provider's own rather than ones HeyMetra has checked.
+- Propose a change to this account. Nothing is sent until you approve it, and HeyMetra cannot undo it afterwards.
 </details>
 
 Anything that would change something comes back as a proposal you approve, inside bounds that live in code rather than in a prompt: ±50% on a budget, 5 campaigns per action and 20 changes a rolling day, and an approval that expires after 30 minutes. [How that works](https://heymetra.com/security/).
@@ -246,7 +246,7 @@ Anything that would change something comes back as a proposal you approve, insid
 
 ## What HeyMetra reads from App Store Connect
 
-Connect with an App Store Connect team key — the issuer id, the key id and the .p8 file — and your MCP client gets one tool that composes calls against Apple's API: the apps on the account with their bundle IDs and SKUs; one day of sales, with units, proceeds and downloads per app and country; the reviews people wrote, with their star ratings and the replies you have already published, so you can ask which complaints nobody has answered; and whatever else the key's role reaches. Apple publishes one sales report per day and yesterday's is the newest, so a month is thirty calls rather than one; ask for the days you need. What the key can reach is decided by the role you give it when you create it, and HeyMetra cannot see which role you chose, so it asks you at connect time whether this connection may change anything. The .p8 itself never leaves the vault: Apple wants a fresh signature on every request, and it is minted there rather than here.
+Connect with an App Store Connect team key (the Issuer ID, the Key ID and the .p8 file), then ask your assistant about the apps on the account with their bundle IDs and SKUs; a day of sales, with units, proceeds and downloads per app and country; and the reviews people wrote, with their star ratings and the replies you have already published, so you can ask which complaints nobody has answered. Apple publishes one sales report per day and yesterday's is the newest, so ask for the days you need. When you connect, you choose whether your assistant may also propose changes. The .p8 file is stored encrypted and never leaves HeyMetra.
 
 <details>
 <summary>About App Store Connect</summary>
